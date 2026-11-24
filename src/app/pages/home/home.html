@@ -1,54 +1,121 @@
-
 <div class="home-container">
 
-  <header class="home-header">
-
-    <h1>Bangtan Olé 💜</h1>
-
-    <div class="header-buttons">
-
-      <button
-        type="button"
-        class="profile-button"
-        (click)="irAlPerfil()"
-      >
-        Mi perfil 💜
-      </button>
-
-      <button
-        type="button"
-        (click)="cerrarSesion()"
-      >
-        Cerrar sesión
-      </button>
-
-    </div>
-
-  </header>
-
-  <main class="welcome-card">
-
-    <h2>¡Bienvenida a Bangtan Olé! 💜</h2>
-
-    <p>Tu pequeño rincón del universo ARMY.</p>
-
-    <p *ngIf="email" class="user-email">
-      Has iniciado sesión como: {{ email }}
-    </p>
-
-    <div class="coming-soon">
-
-      <h3>¡Esto acaba de empezar!</h3>
-
-      <p>
-        Estamos preparando un espacio especial para todas las ARMY.
-        Muy pronto encontrarás muchas cosas por descubrir.
+  <section class="home-intro">
+    <div class="intro-copy">
+      <span class="eyebrow"><span class="eyebrow-dot"></span> TU UNIVERSO, A TU MANERA</span>
+      <h1>Descubre algo <span>que te encante.</span></h1>
+      <p class="intro-description">
+        Un espacio para explorar tus intereses, encontrar nuevas inspiraciones
+        y guardar todo aquello que merece un lugar en tu universo.
       </p>
 
-      <span>💜 BTS FOREVER 💜</span>
+      <div class="intro-actions">
+        <a class="button-primary" routerLink="/explorar">
+          Explorar Byeolbox <span class="bo-chevron-right" aria-hidden="true"></span>
+        </a>
+        <a class="button-secondary" routerLink="/profile">
+          Mi perfil
+        </a>
+      </div>
 
+      <p class="session-note" *ngIf="email">
+        Sesión iniciada como <strong>{{ email }}</strong>
+      </p>
     </div>
 
-  </main>
+    <div class="intro-art" aria-hidden="true">
+      <img
+        class="intro-illustration"
+        src="/img/byeolbox-hero.png"
+        alt=""
+        fetchpriority="high">
+    </div>
+  </section>
+
+  <section class="discovery-section" aria-labelledby="discovery-title">
+    <div class="section-heading">
+      <div>
+        <span class="section-kicker">EMPIEZA POR AQUÍ</span>
+        <h2 id="discovery-title">¿Qué te apetece descubrir?</h2>
+        <p>Explora tus mundos favoritos y encuentra tu próxima inspiración.</p>
+      </div>
+      <a class="text-link" routerLink="/explorar">Ver todo <span class="bo-chevron-right" aria-hidden="true"></span></a>
+    </div>
+
+    <div class="discovery-grid">
+      <a class="discovery-card card-cinema" routerLink="/peliculas-series">
+        <span class="card-icon bo-film" aria-hidden="true"></span>
+        <span class="card-content">
+          <strong>Series y películas</strong>
+          <small>Historias para disfrutar</small>
+        </span>
+        <span class="card-arrow bo-chevron-right" aria-hidden="true"></span>
+      </a>
+
+      <a class="discovery-card card-beauty" routerLink="/catalogo-dinamico/skincare">
+        <span class="card-icon bo-star" aria-hidden="true"></span>
+        <span class="card-content">
+          <strong>Skincare y belleza</strong>
+          <small>Ideas para cuidarte</small>
+        </span>
+        <span class="card-arrow bo-chevron-right" aria-hidden="true"></span>
+      </a>
+
+      <a class="discovery-card card-music" routerLink="/catalogo-dinamico/musica">
+        <span class="card-icon bo-music" aria-hidden="true"></span>
+        <span class="card-content">
+          <strong>Música</strong>
+          <small>Tu próxima banda sonora</small>
+        </span>
+        <span class="card-arrow bo-chevron-right" aria-hidden="true"></span>
+      </a>
+
+      <a class="discovery-card card-books" routerLink="/catalogo-dinamico/libros">
+        <span class="card-icon bo-book-open" aria-hidden="true"></span>
+        <span class="card-content">
+          <strong>Libros</strong>
+          <small>Nuevos mundos por leer</small>
+        </span>
+        <span class="card-arrow bo-chevron-right" aria-hidden="true"></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="personal-space" aria-labelledby="space-title">
+    <div class="section-heading">
+      <div>
+        <span class="section-kicker">TU ESPACIO PERSONAL</span>
+        <h2 id="space-title">Guarda lo que te inspira</h2>
+        <p>Ten tus descubrimientos siempre a mano.</p>
+      </div>
+    </div>
+
+    <div class="space-grid">
+      <a class="space-card" routerLink="/listas">
+        <span class="space-icon bo-bookmark" aria-hidden="true"></span>
+        <span><strong>Mis listas</strong><small>Organiza tus favoritos</small></span>
+        <span class="space-arrow bo-chevron-right" aria-hidden="true"></span>
+      </a>
+
+      <a class="space-card" routerLink="/favoritos">
+        <span class="space-icon icon-fav bo-heart" aria-hidden="true"></span>
+        <span><strong>Favoritos</strong><small>Lo que más te gusta</small></span>
+        <span class="space-arrow bo-chevron-right" aria-hidden="true"></span>
+      </a>
+
+      <a class="space-card" routerLink="/comunidad">
+        <span class="space-icon icon-community bo-users" aria-hidden="true"></span>
+        <span><strong>Comunidad</strong><small>Descubre con otras personas</small></span>
+        <span class="space-arrow bo-chevron-right" aria-hidden="true"></span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="home-footer">
+    <span class="footer-mark bo-star" aria-hidden="true"></span>
+    <span>Byeolbox</span>
+    <span class="footer-divider">·</span>
+    <span>Un pequeño universo de sorpresas.</span>
+  </footer>
 
 </div>

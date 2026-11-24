@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "bangtanoleapp": {
+    "byeolbox": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -66,10 +66,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "bangtanoleapp:build:production"
+              "buildTarget": "byeolbox:build:production"
             },
             "development": {
-              "buildTarget": "bangtanoleapp:build:development"
+              "buildTarget": "byeolbox:build:development"
             }
           },
           "defaultConfiguration": "development"

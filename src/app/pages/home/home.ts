@@ -1,13 +1,12 @@
-
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { SupabaseService } from '../../services/supabase.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
@@ -18,7 +17,7 @@ export class Home implements OnInit {
 
   email = '';
 
-  async ngOnInit() {
+  async ngOnInit(): Promise<void> {
     const { data } = await this.supabase.client.auth.getSession();
 
     if (!data.session) {
@@ -27,22 +26,5 @@ export class Home implements OnInit {
     }
 
     this.email = data.session.user.email ?? '';
-  }
-
-  // Ir al perfil
-  async irAlPerfil() {
-    await this.router.navigate(['/profile']);
-  }
-
-  // Cerrar sesión
-  async cerrarSesion() {
-    const { error } = await this.supabase.client.auth.signOut();
-
-    if (error) {
-      console.error('Error al cerrar sesión:', error.message);
-      return;
-    }
-
-    await this.router.navigate(['/auth/login']);
   }
 }

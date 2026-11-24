@@ -1,4 +1,4 @@
-<div class="app-shell">
+<div class="app-shell" [class.dark-theme]="themeMode === 'dark'">
 
   @if (menuOpen) {
     <div class="sidebar-overlay" (click)="cerrarMenu()"></div>
@@ -7,9 +7,11 @@
   <aside class="sidebar" [class.sidebar-open]="menuOpen">
 
     <a routerLink="/home" class="brand" (click)="cerrarMenu()">
-      <span class="brand-name">Bangtan Olé</span>
-      <span class="brand-subtitle">Tu universo ARMY</span>
-    </a>
+  <img
+    src="/img/logoByeolbox.png"
+    alt="Byeolbox"
+    class="brand-image">
+</a>
 
     <nav class="sidebar-nav">
 
@@ -86,12 +88,28 @@
         <span>Mi perfil</span>
       </a>
 
-    </nav>
+      <div class="sidebar-bottom">
+      <div class="theme-switch-row">
+        <button
+          type="button"
+          class="theme-switch"
+          role="switch"
+          [attr.aria-checked]="themeMode === 'dark'"
+          [attr.aria-label]="themeMode === 'dark' ? 'Desactivar modo oscuro' : 'Activar modo oscuro'"
+          (click)="toggleTheme()">
+          <span class="theme-switch-thumb">
+            <span class="theme-switch-sun" aria-hidden="true">☀</span>
+            <span class="theme-switch-moon" aria-hidden="true">☾</span>
+          </span>
+        </button>
+      </div>
 
-    <div class="sidebar-footer">
-      <span>Hecho para ARMY</span>
-      <strong>Bangtan Olé</strong>
-    </div>
+      <div class="sidebar-footer">
+        <span>Un universo para tus intereses</span>
+        <strong>Byeolbox</strong>
+      </div>
+      </div>
+    </nav>
 
   </aside>
 
@@ -116,8 +134,8 @@
             (ngModelChange)="onGlobalSearchChange()"
             (focus)="onSearchFocus()"
             (keydown.enter)="viewAllResults()"
-            placeholder="Buscar películas, series, personas o ARMY..."
-            aria-label="Buscar en Bangtan Olé"
+            placeholder="¿Qué te apetece descubrir hoy?"
+            aria-label="Buscar en Byeolbox"
             aria-autocomplete="list"
             [attr.aria-expanded]="searchOpen">
           @if (globalQuery) {
@@ -145,7 +163,7 @@
                         } @else {
                           <span class="search-user-initial">{{ (user.display_name || user.username || 'A').charAt(0).toUpperCase() }}</span>
                         }
-                        <span>{{ user.display_name || user.username || 'ARMY' }}<small>{{ user.username ? '@' + user.username : 'Perfil de la comunidad' }}</small></span>
+                        <span>{{ user.display_name || user.username || 'Persona de la comunidad' }}<small>{{ user.username ? '@' + user.username : 'Perfil de la comunidad' }}</small></span>
                       </button>
 
                       @if (user.id !== currentUserId) {
@@ -231,7 +249,7 @@
               <div class="notifications-header">
                 <div>
                   <strong>Notificaciones</strong>
-                  <small>Tu comunidad en Bangtan Olé</small>
+                  <small>Novedades de tu comunidad</small>
                 </div>
                 <button
                   type="button"
@@ -258,7 +276,7 @@
                 <div class="notifications-empty">
                   <span class="bo-heart" aria-hidden="true"></span>
                   <strong>Todo al día</strong>
-                  <small>Cuando alguien te siga, aparecerá aquí.</small>
+                  <small>Cuando haya novedades, las encontrarás aquí.</small>
                 </div>
               } @else {
                 <div class="notifications-list">

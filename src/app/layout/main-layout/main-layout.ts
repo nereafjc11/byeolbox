@@ -49,6 +49,7 @@ interface PublicUserResult {
 })
 export class MainLayout implements OnInit, OnDestroy {
   menuOpen = false;
+  themeMode: 'light' | 'dark' = 'light';
   loadingUser = true;
   myCategories: any[] = [];
   profileName = 'Mi cuenta';
@@ -89,6 +90,8 @@ export class MainLayout implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.loadThemePreference();
+
     const { data } = this.supabaseService.client.auth.onAuthStateChange(
       (_event, session) => { void this.loadUserData(session?.user.id ?? null); }
     );
@@ -349,7 +352,7 @@ onNotificationsMouseLeave(): void {
           type: item.type,
           is_read: item.is_read,
           created_at: item.created_at,
-          actorName: actor?.display_name || actor?.username || 'Una persona de ARMY',
+          actorName: actor?.display_name || actor?.username || 'Una persona de la comunidad',
           actorUsername: actor?.username || null,
           actorAvatar: actor?.avatar_url || null
         };
@@ -577,6 +580,25 @@ onNotificationsMouseLeave(): void {
   // abrimos el catálogo dinámico con su slug.
   return ['/catalogo-dinamico', category?.slug || 'libros'];
 }
+
+  private loadThemePreference(): void {
+    try {
+      const savedTheme = localStorage.getItem('byeolbox-theme');
+      this.themeMode = savedTheme === 'dark' ? 'dark' : 'light';
+    } catch {
+      this.themeMode = 'light';
+    }
+  }
+
+  toggleTheme(): void {
+    this.themeMode = this.themeMode === 'dark' ? 'light' : 'dark';
+
+    try {
+      localStorage.setItem('byeolbox-theme', this.themeMode);
+    } catch {
+      // Si el almacenamiento está bloqueado, el tema sigue funcionando durante esta sesión.
+    }
+  }
 
   cerrarMenu(): void { this.menuOpen = false; }
   alternarMenu(): void { this.menuOpen = !this.menuOpen; }

@@ -482,7 +482,7 @@ export class PeliculasSeries implements OnInit, OnDestroy {
 
         placeholder.innerHTML = `
         <span class="placeholder-title"></span>
-        <span class="placeholder-subtitle">Bangtan Olé</span>
+        <span class="placeholder-subtitle">Byeolbox</span>
       `;
 
         const title = placeholder.querySelector('.placeholder-title');

@@ -7,7 +7,7 @@
   <article class="detail-card">
     <div class="poster">
       @if (item.poster_url) { <img [src]="item.poster_url" [alt]="'Póster de ' + item.title"> }
-      @else { <div class="poster-placeholder">Bangtan Olé</div> }
+      @else { <div class="poster-placeholder">Byeolbox</div> }
     </div>
     <div class="detail-copy">
       <span class="eyebrow">FICHA DE LA COMUNIDAD</span>
@@ -20,7 +20,7 @@
       @if (item.genres.length) { <p><strong>Géneros:</strong> {{ item.genres.join(', ') }}</p> }
       <h2>Sinopsis</h2>
       <p class="overview">{{ item.overview || 'Esta ficha todavía no tiene una sinopsis.' }}</p>
-      <p class="community-note">Añadida por la comunidad de Bangtan Olé 💜</p>
+      <p class="community-note">Añadida por la comunidad de Byeolbox 💜</p>
     </div>
   </article>
   }

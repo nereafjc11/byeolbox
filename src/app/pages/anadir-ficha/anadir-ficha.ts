@@ -337,7 +337,7 @@ export class AnadirFicha implements OnInit, OnDestroy {
         this.duplicateItem = existing;
         await this.loadDuplicatePoster(existing);
         this.showDuplicate = true;
-        this.notice = 'Esta película o serie ya está publicada en Bangtan Olé.';
+        this.notice = 'Esta película o serie ya está publicada en Byeolbox.';
         return;
       }
 

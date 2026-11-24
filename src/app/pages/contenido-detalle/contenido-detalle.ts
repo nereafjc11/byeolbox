@@ -233,7 +233,7 @@ export class ContenidoDetalle implements OnInit, OnDestroy {
   getReviewAuthor(review: Review): string {
     return review.profile?.display_name?.trim()
       || review.profile?.username?.trim()
-      || 'Miembro de Bangtan Olé';
+      || 'Miembro de Byeolbox';
   }
 
   getReviewInitials(review: Review): string {

@@ -182,7 +182,7 @@ export class Listas implements OnInit {
     }
   }
 
-  // Abre el modal propio de Bangtan Olé; ya no usa window.confirm().
+  // Abre el modal propio de Byeolbox; ya no usa window.confirm().
   deleteList(list: UserList): void {
     if (this.deletingListId) return;
     this.pendingDeleteList = list;
